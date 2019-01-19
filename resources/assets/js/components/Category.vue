@@ -40,7 +40,7 @@
                     <tbody>
                         <tr v-for="category in arrayCategory" :key="category.id">
                             <td>
-                                <button type="button" @click="openModal('category','actualizar',category)" class="btn btn-warning btn-sm">
+                                <button type="button" @click="openModal('category','update',category)" class="btn btn-warning btn-sm">
                                   <i class="icon-pencil"></i>
                                 </button> &nbsp;
                                 <template v-if="category.condicion">
@@ -241,11 +241,15 @@
             updateCategory(){
                  
                 let me=this;
-                axios.put('/categoria/actualizar',{
+                axios.put('/category/update',{
+
+                    'code':this.code,
                     'name':this.name,
                     'description':this.description,
+                    'active':this.active,
                     'id':this.category_id,
                 }).then(function(response){
+                    toastr.info("Categoria Actualizada Correctamente");
                     me.cerrarModdal();
                     me.categoryList(1,'','name');
                 }).catch(function(error){
@@ -267,7 +271,7 @@
                                 this.typeAction=1;                  
                                 break;
                             }
-                            case 'actualizar':
+                            case 'update':
                             {
                                 this.modal=1;
                                 this.titleModal='Actualizar Categoria';
@@ -288,6 +292,8 @@
                 this.titleModal='';
                 this.name='';
                 this.description='';
+                this.category_id=0;
+                this.code='';
 
             },
             desactivarCategoria(id){

@@ -44136,11 +44136,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateCategory: function updateCategory() {
 
             var me = this;
-            axios.put('/categoria/actualizar', {
+            axios.put('/category/update', {
+
+                'code': this.code,
                 'name': this.name,
                 'description': this.description,
+                'active': this.active,
                 'id': this.category_id
             }).then(function (response) {
+                toastr.info("Categoria Actualizada Correctamente");
                 me.cerrarModdal();
                 me.categoryList(1, '', 'name');
             }).catch(function (error) {
@@ -44164,7 +44168,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                     this.typeAction = 1;
                                     break;
                                 }
-                            case 'actualizar':
+                            case 'update':
                                 {
                                     this.modal = 1;
                                     this.titleModal = 'Actualizar Categoria';
@@ -44184,6 +44188,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.titleModal = '';
             this.name = '';
             this.description = '';
+            this.category_id = 0;
+            this.code = '';
         },
         desactivarCategoria: function desactivarCategoria(id) {
             var _this = this;
@@ -44416,11 +44422,7 @@ var render = function() {
                             attrs: { type: "button" },
                             on: {
                               click: function($event) {
-                                _vm.openModal(
-                                  "category",
-                                  "actualizar",
-                                  category
-                                )
+                                _vm.openModal("category", "update", category)
                               }
                             }
                           },

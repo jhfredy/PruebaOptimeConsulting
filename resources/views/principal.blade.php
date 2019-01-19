@@ -10,7 +10,7 @@
     <meta name="keyword" content="Laravel Vue Js">
     <link rel="shortcut icon" href="img/favicon.png">
     <title>Prueba Oprime Consulting</title>
-    <meta name="_token" content="{{ csrf_token() }}"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Icons -->
     <link href="css/plantilla.css" rel="stylesheet">
     
@@ -49,7 +49,7 @@
 
     <script src="js/app.js"></script>
     <script src="js/plantilla.js"></script>
-    
+        
 </body>
 
 </html>
