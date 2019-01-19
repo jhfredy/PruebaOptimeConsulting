@@ -230,6 +230,7 @@
                     'description':this.description,
                     'active':this.active,
                 }).then(function(response){
+                    toastr.success("Categoria Agregada Correctamente"); 
                     me.cerrarModdal();
                     me.categoryList(1,'','name');
                    
@@ -238,9 +239,7 @@
                 });
             },
             updateCategory(){
-                 if (this.validarCategoria()) {
-                    return;
-                }
+                 
                 let me=this;
                 axios.put('/categoria/actualizar',{
                     'name':this.name,
