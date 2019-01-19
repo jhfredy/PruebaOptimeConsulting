@@ -17,6 +17,6 @@ Route::get('/', function () {
 Route::get('/category','CategoryController@index');
 Route::post('/category/store','CategoryController@store');
 Route::put('/category/update','CategoryController@update');
-// Route::put('/category/disable','CategoryController@disable');
-// Route::put('/category/enable','CategoryController@enable');
+Route::put('/category/disable','CategoryController@disable');
+Route::put('/category/enable','CategoryController@enable');
 // Route::get('/category/selectCategory','CategoryController@selectCategory');

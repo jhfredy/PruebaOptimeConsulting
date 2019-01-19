@@ -67,14 +67,18 @@ class CategoryController extends Controller
         $category->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
+    public function disable(Request $request)
+   {
+       
+        $category=Category::findOrFail($request->id);  
+        $category->active='0';
+        $category->save();
+   }
+   public function enable(Request $request)
+   {
+        $category=Category::findOrFail($request->id);
+        $category->active='1';
+        $category->save();
+   }
 }

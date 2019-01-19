@@ -27,6 +27,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="table-responsive">
                 <table class="table table-bordered table-striped table-sm">
                     <thead>
                         <tr>
@@ -43,13 +44,13 @@
                                 <button type="button" @click="openModal('category','update',category)" class="btn btn-warning btn-sm">
                                   <i class="icon-pencil"></i>
                                 </button> &nbsp;
-                                <template v-if="category.condicion">
-                                    <button type="button" class="btn btn-danger btn-sm" @click="desactivarCategoria(category.id)">
+                                <template v-if="category.active">
+                                    <button type="button" class="btn btn-danger btn-sm" @click="disableCategory(category.id)">
                                          <i class="icon-trash"></i>
                                     </button>
                                 </template>
                                  <template v-else>
-                                    <button type="button" class="btn btn-info btn-sm" @click="activarCategoria(category.id)">
+                                    <button type="button" class="btn btn-info btn-sm" @click="enableCategory(category.id)">
                                          <i class="icon-bell"></i>
                                     </button>
                                 </template>
@@ -69,6 +70,7 @@
                         
                     </tbody>
                 </table>
+                </div>
                 <nav>
                     <ul class="pagination">
                         <li class="page-item" v-if="pagination.current_page>1">
@@ -256,11 +258,11 @@
                     console.log(error)
                 });
             },
-            openModal(modelo,accion,data=[]){
-                switch(modelo){
+            openModal(model,action,data=[]){
+                switch(model){
                     case "category":
                     {
-                        switch(accion){
+                        switch(action){
                             case 'add':
                             {
                                 this.modal=1;
@@ -296,9 +298,9 @@
                 this.code='';
 
             },
-            desactivarCategoria(id){
+            disableCategory(id){
                 swal({
-                        title: 'estas seguro de desactivar esta categoria?',
+                        title: 'Estas seguro de desactivar esta categoría?',
                         type: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -312,7 +314,7 @@
                         }).then((result) => {
                         if (result.value) {
                             let me=this;
-                            axios.put('/categoria/desactivar',{
+                            axios.put('/category/disable',{
                                 'id':id
                             }).then(function(response){
                                 
@@ -335,9 +337,9 @@
                  })
             
             },
-            activarCategoria(id){
+            enableCategory(id){
                  swal({
-                        title: 'estas seguro de activar esta categoria?',
+                        title: 'Estas seguro de activar esta categoría?',
                         type: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -351,7 +353,7 @@
                         }).then((result) => {
                         if (result.value) {
                             let me=this;
-                            axios.put('/categoria/activar',{
+                            axios.put('/category/enable',{
                                 'id':id
                             }).then(function(response){
                                 

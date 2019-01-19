@@ -44044,6 +44044,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -44151,13 +44153,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         },
-        openModal: function openModal(modelo, accion) {
+        openModal: function openModal(model, action) {
             var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
 
-            switch (modelo) {
+            switch (model) {
                 case "category":
                     {
-                        switch (accion) {
+                        switch (action) {
                             case 'add':
                                 {
                                     this.modal = 1;
@@ -44191,11 +44193,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.category_id = 0;
             this.code = '';
         },
-        desactivarCategoria: function desactivarCategoria(id) {
+        disableCategory: function disableCategory(id) {
             var _this = this;
 
             swal({
-                title: 'estas seguro de desactivar esta categoria?',
+                title: 'Estas seguro de desactivar esta categoría?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -44209,7 +44211,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (result) {
                 if (result.value) {
                     var me = _this;
-                    axios.put('/categoria/desactivar', {
+                    axios.put('/category/disable', {
                         'id': id
                     }).then(function (response) {
 
@@ -44223,11 +44225,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 result.dismiss === swal.DismissReason.cancel) {}
             });
         },
-        activarCategoria: function activarCategoria(id) {
+        enableCategory: function enableCategory(id) {
             var _this2 = this;
 
             swal({
-                title: 'estas seguro de activar esta categoria?',
+                title: 'Estas seguro de activar esta categoría?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -44241,7 +44243,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (result) {
                 if (result.value) {
                     var me = _this2;
-                    axios.put('/categoria/activar', {
+                    axios.put('/category/enable', {
                         'id': id
                     }).then(function (response) {
 
@@ -44402,97 +44404,99 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c(
-            "table",
-            { staticClass: "table table-bordered table-striped table-sm" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.arrayCategory, function(category) {
-                  return _c("tr", { key: category.id }, [
-                    _c(
-                      "td",
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-warning btn-sm",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                _vm.openModal("category", "update", category)
+          _c("div", { staticClass: "table-responsive" }, [
+            _c(
+              "table",
+              { staticClass: "table table-bordered table-striped table-sm" },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.arrayCategory, function(category) {
+                    return _c("tr", { key: category.id }, [
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-warning btn-sm",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.openModal("category", "update", category)
+                                }
                               }
-                            }
-                          },
-                          [_c("i", { staticClass: "icon-pencil" })]
-                        ),
-                        _vm._v("  \n                                "),
-                        category.condicion
-                          ? [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-sm",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.desactivarCategoria(category.id)
+                            },
+                            [_c("i", { staticClass: "icon-pencil" })]
+                          ),
+                          _vm._v("  \n                                "),
+                          category.active
+                            ? [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger btn-sm",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.disableCategory(category.id)
+                                      }
                                     }
-                                  }
-                                },
-                                [_c("i", { staticClass: "icon-trash" })]
-                              )
-                            ]
-                          : [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-info btn-sm",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.activarCategoria(category.id)
+                                  },
+                                  [_c("i", { staticClass: "icon-trash" })]
+                                )
+                              ]
+                            : [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-info btn-sm",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.enableCategory(category.id)
+                                      }
                                     }
-                                  }
-                                },
-                                [_c("i", { staticClass: "icon-bell" })]
-                              )
-                            ]
-                      ],
-                      2
-                    ),
-                    _vm._v(" "),
-                    _c("td", {
-                      domProps: { textContent: _vm._s(category.code) }
-                    }),
-                    _vm._v(" "),
-                    _c("td", {
-                      domProps: { textContent: _vm._s(category.name) }
-                    }),
-                    _vm._v(" "),
-                    _c("td", {
-                      domProps: { textContent: _vm._s(category.description) }
-                    }),
-                    _vm._v(" "),
-                    category.active
-                      ? _c("div", [
-                          _c("span", { staticClass: "badge badge-success" }, [
-                            _vm._v("Activo")
+                                  },
+                                  [_c("i", { staticClass: "icon-bell" })]
+                                )
+                              ]
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("td", {
+                        domProps: { textContent: _vm._s(category.code) }
+                      }),
+                      _vm._v(" "),
+                      _c("td", {
+                        domProps: { textContent: _vm._s(category.name) }
+                      }),
+                      _vm._v(" "),
+                      _c("td", {
+                        domProps: { textContent: _vm._s(category.description) }
+                      }),
+                      _vm._v(" "),
+                      category.active
+                        ? _c("div", [
+                            _c("span", { staticClass: "badge badge-success" }, [
+                              _vm._v("Activo")
+                            ])
                           ])
-                        ])
-                      : _c("div", [
-                          _c("span", { staticClass: "badge badge-danger" }, [
-                            _vm._v("Desactivado")
+                        : _c("div", [
+                            _c("span", { staticClass: "badge badge-danger" }, [
+                              _vm._v("Desactivado")
+                            ])
                           ])
-                        ])
-                  ])
-                }),
-                0
-              )
-            ]
-          ),
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
+          ]),
           _vm._v(" "),
           _c("nav", [
             _c(
