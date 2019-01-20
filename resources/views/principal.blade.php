@@ -13,6 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Icons -->
     <link href="css/plantilla.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
     
 </head>
 
@@ -49,6 +50,7 @@
 
     <script src="js/app.js"></script>
     <script src="js/plantilla.js"></script>
+    <script src="https://unpkg.com/vue-multiselect@2.1.0"></script>
 
 </body>
 

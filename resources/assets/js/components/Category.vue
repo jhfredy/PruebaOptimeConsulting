@@ -235,7 +235,7 @@ Vue.use(VeeValidate);
                     'description':this.description,
                     'active':this.active,
                 }).then(function(response){
-                    toastr.success("Categoria Agregada Correctamente"); 
+                    toastr.success("Categoría Agregada Correctamente"); 
                     me.cerrarModdal();
                     me.categoryList(1,'','name');
                    
@@ -252,7 +252,7 @@ Vue.use(VeeValidate);
                     'active':this.active,
                     'id':this.category_id,
                 }).then(function(response){
-                    toastr.info("Categoria Actualizada Correctamente");
+                    toastr.info("Categoría Actualizada Correctamente");
                     me.cerrarModdal();
                     me.categoryList(1,'','name');
                 }).catch(error=>{this.errorCategory=error.response.data.errors});
@@ -265,7 +265,7 @@ Vue.use(VeeValidate);
                             case 'add':
                             {
                                 this.modal=1;
-                                this.titleModal='Registrar Categoria';
+                                this.titleModal='Registrar Categoría';
                                 this.name='';
                                 this.code='';
                                 this.description='';   
@@ -276,7 +276,7 @@ Vue.use(VeeValidate);
                             case 'update':
                             {
                                 this.modal=1;
-                                this.titleModal='Actualizar Categoria';
+                                this.titleModal='Actualizar Categoría';
                                 this.typeAction=2;
                                 this.code=data['code'];
                                 this.name=data['name'];

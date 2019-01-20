@@ -19,4 +19,10 @@ Route::post('/category/store','CategoryController@store');
 Route::put('/category/update','CategoryController@update');
 Route::put('/category/disable','CategoryController@disable');
 Route::put('/category/enable','CategoryController@enable');
-// Route::get('/category/selectCategory','CategoryController@selectCategory');
+Route::get('/category/selectCategory','CategoryController@selectCategory');
+
+Route::get('/product','ProductController@index');
+Route::post('/product/add','ProductController@store');
+Route::put('/product/update','ProductController@update');
+Route::delete('/product/delete','ProductController@delete');
+

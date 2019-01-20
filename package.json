@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "toastr": "^2.1.4",
-    "vee-validate": "^2.1.5"
+    "vee-validate": "^2.1.5",
+    "vue-multiselect": "^2.1.3"
   }
 }

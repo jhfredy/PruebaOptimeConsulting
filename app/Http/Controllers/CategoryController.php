@@ -36,6 +36,12 @@ class CategoryController extends Controller
             'category'=>$category
         ];
     }
+    public function selectCategory(Request $request){
+        $category=Category::where('active','=','1')
+        ->select('id','name')->orderBy('name','asc')->get();
+
+        return ['category'=>$category];
+    }
 
     
 
