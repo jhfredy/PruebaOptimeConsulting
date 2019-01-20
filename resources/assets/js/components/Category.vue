@@ -104,11 +104,10 @@
                     <div class="form-group row">
                             <label class="col-md-3 form-control-label" for="text-input">Código</label>
                             <div class="col-md-9">
-                                <input type="text" v-model="code" class="form-control" placeholder="Código de la categoría">
+                                <input name="code" type="text" v-model="code" class="form-control" placeholder="Código de la categoría" v-validate="'required'">
                                 <span v-if="errorCategory" class=" help-block">
                                     <strong>{{ errorCategory.code }}</strong>
                                 </span>
-                                
                             </div>
                         </div>
                         <div class="form-group row">
@@ -153,8 +152,9 @@
 
 <script>
 import VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
     export default {
-        components:{VeeValidate},
+        
         data(){
             return{
                 code:'',

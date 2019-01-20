@@ -44048,11 +44048,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { VeeValidate: __WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */] },
     data: function data() {
         return {
             code: '',
@@ -44652,10 +44651,17 @@ var render = function() {
                               rawName: "v-model",
                               value: _vm.code,
                               expression: "code"
+                            },
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
+                            name: "code",
                             type: "text",
                             placeholder: "Código de la categoría"
                           },
