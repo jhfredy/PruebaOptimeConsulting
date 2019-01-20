@@ -20,8 +20,8 @@ class CategoryUpdateRequest extends FormRequest
     {
         return [
             'code'=>sprintf('sometimes|required|alpha_num|unique:categories,code,%d,id',$this->id),
-            'name'=>sprintf('required|string|min:2|unique:categories,name,%d,id',$this->id),
-            'description'=>'required|string',
+            'name'=>sprintf('required|string|min:2|max:255|unique:categories,name,%d,id',$this->id),
+            'description'=>'required|string|max:255',
         ];
         
     }

@@ -25,8 +25,8 @@ class CategoryStoreRequest extends FormRequest
     {
         return [
             'code'=>'required|alpha_num|unique:categories,code|sometimes',
-            'name'=>'required|string|min:2|unique:categories,name',
-            'description'=>'required|string',
+            'name'=>'required|string|min:2|max:255|unique:categories,name',
+            'description'=>'required|string|max:255',
         ];
         
     }
