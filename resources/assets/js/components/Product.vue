@@ -100,6 +100,9 @@
                             <div class="col-md-9">
                                 <multiselect v-model="category" label="name" placeholder="Seleccione una categoría" :options="arrayCategory" :searchable="true" :allow-empty="false">
                                 </multiselect>
+                                <span v-if="errorProduct" class=" help-block">
+                                    <strong>{{ errorProduct.category_id }}</strong>
+                                </span>
                             </div>
                         </div>
                     <div class="form-group row">
@@ -123,9 +126,27 @@
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
                             <div class="col-md-9">
-                                <input type="text" v-model="description" class="form-control" placeholder="ingrese descripcion">
+                                <input type="text" v-model="description" class="form-control" placeholder="ingresé descripcion">
                                 <span v-if="errorProduct" class=" help-block">
                                     <strong>{{ errorProduct.description }}</strong>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="email-input">Marca</label>
+                            <div class="col-md-9">
+                                <input type="text" v-model="brand" class="form-control" placeholder="ingresé la marca">
+                                <span v-if="errorProduct" class=" help-block">
+                                    <strong>{{ errorProduct.brand }}</strong>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="email-input">Precio</label>
+                            <div class="col-md-9">
+                                <input type="text" v-model="price" class="form-control" placeholder="ingresé el precio">
+                                <span v-if="errorProduct" class=" help-block">
+                                    <strong>{{ errorProduct.price }}</strong>
                                 </span>
                             </div>
                         </div>
@@ -252,9 +273,9 @@ Vue.use(VeeValidate);
                     'description':this.description,
                     'brand':this.brand,
                     'price':this.price,
-                    'category_id':this.category_id,
+                    'category_id':this.category.id,
                 }).then(function(response){
-                    toastr.success("Producto Agregada Correctamente"); 
+                    toastr.success("Producto Agregado Correctamente"); 
                     me.cerrarModdal();
                     me.productList(1,'','name');
                    
@@ -269,7 +290,7 @@ Vue.use(VeeValidate);
                     'description':this.description,
                     'brand':this.brand,
                     'price':this.price,
-                    'category_id':this.category_id,
+                    'category_id':this.category.id,
                     'id':this.product_id,
                 }).then(function(response){
                     toastr.info("Categoria Actualizada Correctamente");
@@ -288,6 +309,7 @@ Vue.use(VeeValidate);
                                 this.titleModal='Registrar Categoria';
                                 this.name='';
                                 this.category_name='';
+                                this.category=[];
                                 this.code='';
                                 this.description=''; 
                                 this.brand='';
@@ -320,6 +342,7 @@ Vue.use(VeeValidate);
                 this.titleModal='';
                 this.name='';
                 this.category_name='';
+                this.category=[];
                 this.code='';
                 this.description=''; 
                 this.brand='';

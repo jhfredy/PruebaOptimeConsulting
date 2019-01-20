@@ -22,7 +22,7 @@ Route::put('/category/enable','CategoryController@enable');
 Route::get('/category/selectCategory','CategoryController@selectCategory');
 
 Route::get('/product','ProductController@index');
-Route::post('/product/add','ProductController@store');
+Route::post('/product/store','ProductController@store');
 Route::put('/product/update','ProductController@update');
 Route::delete('/product/delete','ProductController@delete');
 

@@ -54099,6 +54099,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54199,9 +54220,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                 'description': this.description,
                 'brand': this.brand,
                 'price': this.price,
-                'category_id': this.category_id
+                'category_id': this.category.id
             }).then(function (response) {
-                toastr.success("Producto Agregada Correctamente");
+                toastr.success("Producto Agregado Correctamente");
                 me.cerrarModdal();
                 me.productList(1, '', 'name');
             }).catch(function (error) {
@@ -54218,7 +54239,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                 'description': this.description,
                 'brand': this.brand,
                 'price': this.price,
-                'category_id': this.category_id,
+                'category_id': this.category.id,
                 'id': this.product_id
             }).then(function (response) {
                 toastr.info("Categoria Actualizada Correctamente");
@@ -54241,6 +54262,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                                     this.titleModal = 'Registrar Categoria';
                                     this.name = '';
                                     this.category_name = '';
+                                    this.category = [];
                                     this.code = '';
                                     this.description = '';
                                     this.brand = '';
@@ -54272,6 +54294,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
             this.titleModal = '';
             this.name = '';
             this.category_name = '';
+            this.category = [];
             this.code = '';
             this.description = '';
             this.brand = '';
@@ -54729,7 +54752,15 @@ var render = function() {
                               },
                               expression: "category"
                             }
-                          })
+                          }),
+                          _vm._v(" "),
+                          _vm.errorProduct
+                            ? _c("span", { staticClass: " help-block" }, [
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.errorProduct.category_id))
+                                ])
+                              ])
+                            : _vm._e()
                         ],
                         1
                       )
@@ -54857,7 +54888,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            placeholder: "ingrese descripcion"
+                            placeholder: "ingresé descripcion"
                           },
                           domProps: { value: _vm.description },
                           on: {
@@ -54874,6 +54905,98 @@ var render = function() {
                           ? _c("span", { staticClass: " help-block" }, [
                               _c("strong", [
                                 _vm._v(_vm._s(_vm.errorProduct.description))
+                              ])
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "email-input" }
+                        },
+                        [_vm._v("Marca")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.brand,
+                              expression: "brand"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "ingresé la marca"
+                          },
+                          domProps: { value: _vm.brand },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.brand = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errorProduct
+                          ? _c("span", { staticClass: " help-block" }, [
+                              _c("strong", [
+                                _vm._v(_vm._s(_vm.errorProduct.brand))
+                              ])
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-md-3 form-control-label",
+                          attrs: { for: "email-input" }
+                        },
+                        [_vm._v("Precio")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-9" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.price,
+                              expression: "price"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "ingresé el precio"
+                          },
+                          domProps: { value: _vm.price },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.price = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errorProduct
+                          ? _c("span", { staticClass: " help-block" }, [
+                              _c("strong", [
+                                _vm._v(_vm._s(_vm.errorProduct.price))
                               ])
                             ])
                           : _vm._e()
