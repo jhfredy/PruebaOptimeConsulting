@@ -45040,6 +45040,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -45079,9 +45104,188 @@ var staticRenderFns = [
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [
               _c("p", [
+                _c("strong", [_vm._v("Realizar un Crud de Productos")])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticStyle: { "text-align": "justify" } }, [
                 _vm._v(
-                  "\n                Realizar un Crud de Productos\n\n                La idea es realizar dos CRUD (create, read, update, delete) uno de productos y y el otro de categoría de productos en PHP, utilizando el Framework Symfony en su versión 2.8 o superior (Symfony 3.x o 4.x preferiblemente). Manejar la Base de Datos en Mysql o en SQLite. Además apreciamos que nos envíen el código usando un repositorio de Github.\n\n                Por favor no usar los comandos de symfony de creación de crud para efectos de este ejercicio.\n\n                Datos de los productos: id (entero), codigo (string), nombre (string), descripcion (string), marca (string), categoría (relación con la categoría de productos), precio  (float).\n                Datos de las categorías de productos: id  (entero), codigo (string), nombre (string), descripcion (string), activo (booleano).\n\n                Validaciones de los Productos:\n                Todos los campos son obligatorios.\n                El nombre y el código no pueden repetirse.\n                El código no puede contener caracteres especiales ni espacios\n                El código debe tener mínimo 4 caracteres y máximo 10.\n                El nombre debe contener mínimo 4 caracteres.\n                El precio debe ser un número válido.\n\n                Validaciones de las Categorías de productos:\n                Todos los campos son obligatorios.\n                El nombre y el codigo no pueden repetirse.\n                El código no puede contener caracteres especiales ni espacios.\n                El nombre debe contener mínimo 2 caracteres.\n\n                La aplicación debe Permitir:\n                Listar productos, solo mostrar los productos de categorías de producto activas. (Paginar los productos es un Plus o Adicional).\n                Filtrar productos.\n                Ordenar por columna (Opcional, es un plus).\n                Crear Productos (Solo deben poder seleccionarse categorías activas al crear productos).\n                Editar Productos  (Solo deben poder seleccionarse categorías activas al editar productos).\n                Eliminar Productos (El usuario debe confirmar esta acción, es decir, se le debe preguntar al usuario si está seguro de que desea eliminar el producto).\n                Listar Categorías de productos.\n                Crear Categoría de Producto.\n                Editar Categoría de Producto.\n                Acción de Activar Categoría de Producto.\n                Acción de Desactivar Categoría de Producto.Trabajar con bootstrap css o cualquier otro. \n\n                Adicionalmente (No es requerido) sería interesante contar con los siguientes Test:\n\n                Crear tests (unitarios o de integracion) para los servicios que creen.\n                Crear tests (unitarios o integración) de las validaciones de las entidades.\n                "
+                  "La idea es realizar dos CRUD (create, read, update, delete) uno de productos y y el otro de categoría de productos en PHP, utilizando el Framework Symfony en su versión 2.8 o superior (Symfony 3.x o 4.x preferiblemente). Manejar la Base de Datos en Mysql o en SQLite. Además apreciamos que nos envíen el código usando un repositorio de Github."
                 )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("strong", [
+                  _vm._v(
+                    "Por favor no usar los comandos de symfony de creación de crud para efectos de este ejercicio."
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticStyle: { "text-align": "justify" } }, [
+                _vm._v(
+                  "Datos de los productos: id (entero), codigo (string), nombre (string), descripcion (string), marca (string), categoría (relación con la categoría de productos), precio  (float).\n                Datos de las categorías de productos: id  (entero), codigo (string), nombre (string), descripcion (string), activo (booleano)."
+                )
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "row",
+                  staticStyle: { "text-align": "justify" }
+                },
+                [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("p", [_vm._v("Validaciones de los Productos:")]),
+                    _vm._v(" "),
+                    _c("ul", [
+                      _c("li", [
+                        _c("strong", [
+                          _vm._v("Todos los campos son obligatorios.")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v("El nombre y el código no pueden repetirse.")
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "El código no puede contener caracteres especiales ni espacios"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "El código debe tener mínimo 4 caracteres y máximo 10."
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v("El nombre debe contener mínimo 4 caracteres.")
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [_vm._v("El precio debe ser un número válido.")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("p", [
+                      _vm._v("Validaciones de las Categorías de productos:")
+                    ]),
+                    _vm._v(" "),
+                    _c("ul", [
+                      _c("li", [
+                        _c("strong", [
+                          _vm._v("Todos los campos son obligatorios.")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v("El nombre y el código no pueden repetirse.")
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "El código no puede contener caracteres especiales ni espacios."
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v("El nombre debe contener mínimo 2 caracteres.")
+                      ])
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("p", [_vm._v("La aplicación debe Permitir:")]),
+                  _vm._v(" "),
+                  _c("ul", [
+                    _c("li", [
+                      _vm._v(
+                        "Listar productos, solo mostrar los productos de categorías de producto activas. (Paginar los productos es un Plus o Adicional)."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Filtrar productos.")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Ordenar por columna (Opcional, es un plus).")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Crear Productos (Solo deben poder seleccionarse categorías activas al crear productos)."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Editar Productos  (Solo deben poder seleccionarse categorías activas al editar productos)."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Eliminar Productos (El usuario debe confirmar esta acción, es decir, se le debe preguntar al usuario si está seguro de que desea eliminar el producto)."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Listar Categorías de productos.")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Crear Categoría de Producto.")]),
+                    _vm._v(" "),
+                    _c("li", [_vm._v("Editar Categoría de Producto.")]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v("Acción de Activar Categoría de Producto.")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        "Acción de Desactivar Categoría de Producto.Trabajar con bootstrap css o cualquier otro. "
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("p", [
+                    _vm._v(
+                      "Adicionalmente (No es requerido) sería interesante contar con los siguientes Test:"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("ul", [
+                    _c("li", [
+                      _vm._v(
+                        "Crear tests (unitarios o de integracion) para los servicios que creen."
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _vm._v(
+                        " Crear tests (unitarios o integración) de las validaciones de las entidades."
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row col-md-12" }, [
+                _c("p", [_c("strong", [_vm._v("Notas: ")])]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    " Manejar el código y base de datos en ingles, las pantallas en español.\n                La idea es que nos puedas estar enviando esto para el domingo al medio día."
+                  )
+                ])
               ])
             ])
           ])
