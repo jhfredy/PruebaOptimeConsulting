@@ -105,6 +105,9 @@
                             <label class="col-md-3 form-control-label" for="text-input">Código</label>
                             <div class="col-md-9">
                                 <input type="text" v-model="code" class="form-control" placeholder="Código de la categoría">
+                                <span v-if="errorCategory" class=" help-block">
+                                    <strong>{{ errorCategory.code }}</strong>
+                                </span>
                                 
                             </div>
                         </div>
@@ -112,23 +115,22 @@
                             <label class="col-md-3 form-control-label" for="text-input">Nombre</label>
                             <div class="col-md-9">
                                 <input type="text" v-model="name" class="form-control" placeholder="Nombre de categoría">
-                                
+                                <span v-if="errorCategory" class=" help-block">
+                                    <strong>{{ errorCategory.name }}</strong>
+                                </span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label" for="email-input">Descripción</label>
                             <div class="col-md-9">
-                                <input type="email" v-model="description" class="form-control" placeholder="ingrese descripcion">
+                                <input type="text" v-model="description" class="form-control" placeholder="ingrese descripcion">
+                                <span v-if="errorCategory" class=" help-block">
+                                    <strong>{{ errorCategory.description }}</strong>
+                                </span>
                             </div>
                         </div>
 
-                        <div v-show="errorCategoria" class="form-group row div-error">
-                            <div class="text-center text-error">
-                                <div v-for="error in errorMostrarMsjCategoria" :key="error" v-text="error">
-
-                                </div>
-                            </div>
-                        </div>
+                        
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -150,7 +152,9 @@
 </template>
 
 <script>
+import VeeValidate from 'vee-validate';
     export default {
+        components:{VeeValidate},
         data(){
             return{
                 code:'',
@@ -161,8 +165,7 @@
                 modal:0,
                 titleModal:'',
                 typeAction:0,
-                errorCategoria:0,
-                errorMostrarMsjCategoria:[],
+                errorCategory:{},
                 category_id:0,
                 pagination:{
                     'total':0,
@@ -211,7 +214,7 @@
                     var response_data=response.data;
                     me.arrayCategory=response_data.category.data;
                     me.pagination=response_data.pagination;
-                }).catch(function(error){
+                }).catch(error=>{
                     console.log(error);
                 });
 
@@ -236,9 +239,7 @@
                     me.cerrarModdal();
                     me.categoryList(1,'','name');
                    
-                }).catch(function(error){
-                    console.log(error)
-                });
+                }).catch(error=>{this.errorCategory=error.response.data.errors});
             },
             updateCategory(){
                  
@@ -270,7 +271,8 @@
                                 this.name='';
                                 this.code='';
                                 this.description='';   
-                                this.typeAction=1;                  
+                                this.typeAction=1; 
+                                this.errorCategory={};                 
                                 break;
                             }
                             case 'update':
@@ -296,6 +298,7 @@
                 this.description='';
                 this.category_id=0;
                 this.code='';
+                this.errorCategory={};
 
             },
             disableCategory(id){
@@ -375,18 +378,7 @@
                         }
                  })
             },
-            validarCategoria(){
-                this.errorCategoria=0
-                this.errorMostrarMsjCategoria=[];
-
-                if (!this.name) {
-                    this.errorMostrarMsjCategoria.push("el nombre de la categoria no puede estar vacio.")
-                }
-                if (this.errorMostrarMsjCategoria.length) {
-                    this.errorCategoria=1;
-                }
-                return this.errorCategoria;
-            },
+            
         },
         mounted() {
             this.categoryList(1,this.search,this.criteria);
