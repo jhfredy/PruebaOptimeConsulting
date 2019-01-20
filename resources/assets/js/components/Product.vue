@@ -48,7 +48,7 @@
                                 <button type="button" @click="openModal('product','update',product)" class="btn btn-warning btn-sm">
                                   <i class="icon-pencil"></i>
                                 </button> &nbsp;
-                                    <button type="button" class="btn btn-info btn-sm" @click="deleteProduct(product.id)">
+                                    <button type="button" class="btn btn-danger btn-sm" @click="deleteProduct(product.id)">
                                          <i class="icon-trash"></i>
                                     </button>
                                 
@@ -306,7 +306,7 @@ Vue.use(VeeValidate);
                             case 'add':
                             {
                                 this.modal=1;
-                                this.titleModal='Registrar Categoria';
+                                this.titleModal='Registrar Producto';
                                 this.name='';
                                 this.category_name='';
                                 this.category=[];
@@ -321,7 +321,7 @@ Vue.use(VeeValidate);
                             case 'update':
                             {
                                 this.modal=1;
-                                this.titleModal='Actualizar Categoria';
+                                this.titleModal='Actualizar Producto';
                                 this.typeAction=2;
                                 this.brand=data['brand'];
                                 this.price=data['price']; 
@@ -351,9 +351,9 @@ Vue.use(VeeValidate);
                 this.errorProduct={}; 
 
             },
-            disableCategory(id){
+            deleteProduct(id){
                 swal({
-                        title: 'Estas seguro de desactivar esta categoría?',
+                        title: 'Estas seguro de eliminar este producto?',
                         type: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -367,14 +367,14 @@ Vue.use(VeeValidate);
                         }).then((result) => {
                         if (result.value) {
                             let me=this;
-                            axios.put('/category/disable',{
-                                'id':id
+                            axios.delete('/product/delete/'+id,{
+                                
                             }).then(function(response){
                                 
                                 me.productList(1,'','name');
                                 swal(
-                                'Desactivado!',
-                                'El registro ha sido desactivado',
+                                'Eliminado!',
+                                'El producto ha sido Eliminado',
                                 'success'
                                 )
                             }).catch(function(error){
@@ -390,44 +390,7 @@ Vue.use(VeeValidate);
                  })
             
             },
-            enableCategory(id){
-                 swal({
-                        title: 'Estas seguro de activar esta categoría?',
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Aceptar',
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonClass: 'btn btn-success',
-                        cancelButtonClass: 'btn btn-danger',
-                        buttonsStyling: false,
-                        reverseButtons: true
-                        }).then((result) => {
-                        if (result.value) {
-                            let me=this;
-                            axios.put('/category/enable',{
-                                'id':id
-                            }).then(function(response){
-                                
-                                me.productList(1,'','name');
-                                swal(
-                                'Activado!',
-                                'El registro ha sido Activado',
-                                'success'
-                                )
-                            }).catch(function(error){
-                                console.log(error)
-                            });
-                        
-                        } else if (
-                        // Read more about handling dismissals
-                        result.dismiss === swal.DismissReason.cancel
-                        ) {
-                        
-                        }
-                 })
-            },
+            
             
         },
         mounted() {

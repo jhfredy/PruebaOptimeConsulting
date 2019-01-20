@@ -24,5 +24,5 @@ Route::get('/category/selectCategory','CategoryController@selectCategory');
 Route::get('/product','ProductController@index');
 Route::post('/product/store','ProductController@store');
 Route::put('/product/update','ProductController@update');
-Route::delete('/product/delete','ProductController@delete');
+Route::delete('/product/delete/{id}','ProductController@delete');
 

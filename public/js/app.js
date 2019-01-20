@@ -54259,7 +54259,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                             case 'add':
                                 {
                                     this.modal = 1;
-                                    this.titleModal = 'Registrar Categoria';
+                                    this.titleModal = 'Registrar Producto';
                                     this.name = '';
                                     this.category_name = '';
                                     this.category = [];
@@ -54274,7 +54274,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                             case 'update':
                                 {
                                     this.modal = 1;
-                                    this.titleModal = 'Actualizar Categoria';
+                                    this.titleModal = 'Actualizar Producto';
                                     this.typeAction = 2;
                                     this.brand = data['brand'];
                                     this.price = data['price'];
@@ -54302,11 +54302,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
             this.typeAction = 1;
             this.errorProduct = {};
         },
-        disableCategory: function disableCategory(id) {
+        deleteProduct: function deleteProduct(id) {
             var _this3 = this;
 
             swal({
-                title: 'Estas seguro de desactivar esta categoría?',
+                title: 'Estas seguro de eliminar este producto?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -54320,44 +54320,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
             }).then(function (result) {
                 if (result.value) {
                     var me = _this3;
-                    axios.put('/category/disable', {
-                        'id': id
-                    }).then(function (response) {
+                    axios.delete('/product/delete/' + id, {}).then(function (response) {
 
                         me.productList(1, '', 'name');
-                        swal('Desactivado!', 'El registro ha sido desactivado', 'success');
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
-                } else if (
-                // Read more about handling dismissals
-                result.dismiss === swal.DismissReason.cancel) {}
-            });
-        },
-        enableCategory: function enableCategory(id) {
-            var _this4 = this;
-
-            swal({
-                title: 'Estas seguro de activar esta categoría?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Aceptar',
-                cancelButtonText: 'Cancelar',
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-                reverseButtons: true
-            }).then(function (result) {
-                if (result.value) {
-                    var me = _this4;
-                    axios.put('/category/enable', {
-                        'id': id
-                    }).then(function (response) {
-
-                        me.productList(1, '', 'name');
-                        swal('Activado!', 'El registro ha sido Activado', 'success');
+                        swal('Eliminado!', 'El producto ha sido Eliminado', 'success');
                     }).catch(function (error) {
                         console.log(error);
                     });
@@ -54539,7 +54505,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-info btn-sm",
+                            staticClass: "btn btn-danger btn-sm",
                             attrs: { type: "button" },
                             on: {
                               click: function($event) {
