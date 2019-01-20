@@ -255,9 +255,7 @@ Vue.use(VeeValidate);
                     toastr.info("Categoria Actualizada Correctamente");
                     me.cerrarModdal();
                     me.categoryList(1,'','name');
-                }).catch(function(error){
-                    console.log(error)
-                });
+                }).catch(error=>{this.errorCategory=error.response.data.errors});
             },
             openModal(model,action,data=[]){
                 switch(model){

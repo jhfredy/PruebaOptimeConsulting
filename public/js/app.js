@@ -44140,6 +44140,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
             });
         },
         updateCategory: function updateCategory() {
+            var _this2 = this;
 
             var me = this;
             axios.put('/category/update', {
@@ -44154,7 +44155,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                 me.cerrarModdal();
                 me.categoryList(1, '', 'name');
             }).catch(function (error) {
-                console.log(error);
+                _this2.errorCategory = error.response.data.errors;
             });
         },
         openModal: function openModal(model, action) {
@@ -44200,7 +44201,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
             this.errorCategory = {};
         },
         disableCategory: function disableCategory(id) {
-            var _this2 = this;
+            var _this3 = this;
 
             swal({
                 title: 'Estas seguro de desactivar esta categoría?',
@@ -44216,7 +44217,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                 reverseButtons: true
             }).then(function (result) {
                 if (result.value) {
-                    var me = _this2;
+                    var me = _this3;
                     axios.put('/category/disable', {
                         'id': id
                     }).then(function (response) {
@@ -44232,7 +44233,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
             });
         },
         enableCategory: function enableCategory(id) {
-            var _this3 = this;
+            var _this4 = this;
 
             swal({
                 title: 'Estas seguro de activar esta categoría?',
@@ -44248,7 +44249,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                 reverseButtons: true
             }).then(function (result) {
                 if (result.value) {
-                    var me = _this3;
+                    var me = _this4;
                     axios.put('/category/enable', {
                         'id': id
                     }).then(function (response) {
