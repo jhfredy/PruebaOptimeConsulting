@@ -20,11 +20,14 @@ class ProductController extends Controller
         if ($search=='') {
             $product=Product::join('categories','products.category_id','=','categories.id')
             ->select('products.id','products.category_id','products.code','products.name','categories.name as category_name','products.price','products.brand','products.description','categories.active')
-            ->orderBy('products.id','desc')->paginate(3);
+            ->orderBy('products.id','desc')
+            ->where('categories.active',1)
+            ->paginate(3);
         }else{
             $product=Product::join('categories','products.category_id','=','categories.id')
             ->select('products.id','products.category_id','products.code','products.name','categories.name as category_name','products.price','products.brand','products.description','categories.active')
             ->where('products.'.$criteria,'like','%'.$search.'%')
+            ->where('categories.active',1)
             ->orderBy('products.id','desc')->paginate(3);
         }
 
